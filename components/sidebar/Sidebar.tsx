@@ -1,40 +1,45 @@
 import { useState } from "react";
+// @ts-ignore
 import { MdKeyboardArrowDown, MdOutlineClose } from "react-icons/md";
 import { IIconButton } from "../../lib/interfaces/icon-button";
 
 import SideBarSection from "./SidebarSection";
 
+import { useAppContext } from "../../context/state";
+
 const serviceButtons: Array<IIconButton> = [
   {
-    title: 'Pay Now',
+    title: "Pay Now",
   },
   {
-    title: 'Payment Arrangement',
+    title: "Payment Arrangement",
   },
   {
-    title: 'Check Balance',
+    title: "Check Balance",
   },
   {
-    title: 'Make Payment',
+    title: "Make Payment",
   },
 ];
 
 const contactButtons: Array<IIconButton> = [
   {
-    title: 'Phone',
+    title: "Phone",
   },
   {
-    title: 'Whatsapp',
+    title: "Whatsapp",
   },
   {
-    title: 'Webchat',
+    title: "Webchat",
   },
   {
-    title: 'Contact Form',
+    title: "Contact Form",
   },
 ];
 
 export default function Sidebar() {
+  const ctx = useAppContext();
+  console.log(ctx, "ctx");
   const [menuOpen, setMenuOpen] = useState(false);
 
   const handlemenuOpenClick = (): void => {
