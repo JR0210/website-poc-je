@@ -1,4 +1,3 @@
-import { useState } from "react";
 // @ts-ignore
 import { MdKeyboardArrowDown, MdOutlineClose } from "react-icons/md";
 import { IIconButton } from "../../lib/interfaces/icon-button";
@@ -70,8 +69,10 @@ export default function Sidebar() {
 
       <div
         className={`fixed overflow-y-auto transition-right duration-500 ease-in-out ${
-          sidebarOpen ? `right-0` : `-right-1/3`
-        } top-0 h-full w-full lg:w-1/2 2xl:w-1/3 bg-blue-300 shadow-lg p-6 z-20`}
+          sidebarOpen ? "right-0" : "-right-full lg:-right-1/2 2xl:-right-1/3"
+        } ${
+          dashboardOpen && "w-0 -right-full lg:right-0"
+        } w-full lg:w-1/2 2xl:w-1/3 top-0 h-full bg-blue-300 shadow-lg p-6 z-20`}
       >
         <div className="relative flex flex-col">
           <MdOutlineClose

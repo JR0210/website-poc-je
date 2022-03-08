@@ -11,8 +11,8 @@ export default function Dashboard() {
   return (
     <aside
       className={`fixed overflow-y-auto transition-right duration-500 ease-in-out ${
-        dashboardOpen ? "right-1/3" : "-right-2/3"
-      } w-2/3 top-0 h-full bg-primary-50 z-10`}
+        dashboardOpen ? "right-0 lg:right-1/2 2xl:right-1/3" : "-right-full"
+      } w-full lg:w-1/2 2xl:w-2/3 top-0 h-full bg-primary-50 z-10`}
     >
       <div className="w-full h-full px-48 py-14 flex flex-col">
         <MdArrowRightAlt
