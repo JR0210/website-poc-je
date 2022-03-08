@@ -38,34 +38,40 @@ const contactButtons: Array<IIconButton> = [
 ];
 
 export default function Sidebar() {
-  const ctx = useAppContext();
-  console.log(ctx, "ctx");
-  const [menuOpen, setMenuOpen] = useState(false);
+  const { toggleSidebar, sidebarOpen, dashboardOpen, toggleDashboard } =
+    useAppContext();
 
   const handlemenuOpenClick = (): void => {
-    setMenuOpen(!menuOpen);
+    toggleSidebar(!sidebarOpen);
+    if (dashboardOpen) {
+      toggleDashboard(false);
+    }
   };
 
   return (
     <>
       <div
         onClick={handlemenuOpenClick}
-        className={`hidden md:flex fixed text-base transition-right duration-500 ease-in-out font-sans top-[45vh] origin-top-right transform rotate-90 px-5 py-3 ${
-          menuOpen ? `right-full lg:right-1/2 2xl:right-1/3` : `right-0`
-        }  rounded-b-md shadow-lg bg-blue-200 text-white cursor-pointer flex flex-row space-x-2 justify-center items-center z-10`}
+        className={`fixed text-base transition-all duration-500 ease-in-out font-sans top-[45vh] origin-top-right transform rotate-90 px-5 py-3 ${
+          sidebarOpen ? `right-full lg:right-1/2 2xl:right-1/3` : `right-0`
+        } ${
+          dashboardOpen
+            ? "opacity-0 pointer-events-none"
+            : "opacity-100 cursor-pointer"
+        }  flex rounded-b-md shadow-lg bg-blue-200 text-white flex-row space-x-2 justify-center items-center z-20`}
       >
         <span className="rotate-180">Self Service</span>
         <MdKeyboardArrowDown
           className={`transition-rotate duration-500 ease-out ${
-            menuOpen ? `rotate-180` : `rotate-0`
+            sidebarOpen ? `rotate-180` : `rotate-0`
           }  h-6 w-6`}
         />
       </div>
 
       <div
         className={`fixed overflow-y-auto transition-right duration-500 ease-in-out ${
-          menuOpen ? `right-0` : `-right-1/3`
-        } top-0 h-full w-full lg:w-1/2 2xl:w-1/3 bg-blue-300 shadow-lg p-6 z-10`}
+          sidebarOpen ? `right-0` : `-right-1/3`
+        } top-0 h-full w-full lg:w-1/2 2xl:w-1/3 bg-blue-300 shadow-lg p-6 z-20`}
       >
         <div className="relative flex flex-col">
           <MdOutlineClose
